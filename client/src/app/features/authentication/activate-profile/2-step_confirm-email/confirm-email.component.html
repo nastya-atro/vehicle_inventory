@@ -1,0 +1,17 @@
+<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="">
+        <div class="card" style="border-radius: 1rem">
+            <div class="card-body p-5">
+                <div class="mt-md-4">
+                    <h3>Email confirmation</h3>
+                    <div>
+                        We have sent e-mail to your email
+                        <b *ngIf="email">{{ email }}</b> to confirm the validity of our email address.
+                        <div>After receiving the email follow the link provided to complete you registration.</div>
+                    </div>
+                    <div class="text-end">Return to <a class="text-center" href="/signup">Sign Up</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

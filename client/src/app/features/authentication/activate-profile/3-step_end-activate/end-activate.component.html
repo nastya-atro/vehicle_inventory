@@ -1,0 +1,19 @@
+<div class="row d-flex justify-content-center align-items-center h-100">
+  <div class="">
+    <div class="card" style="border-radius: 1rem">
+      <div class="card-body p-5">
+        <div class="mt-md-4">
+          <h3>{{ this.confirmationError ? "Confirm registration error" : "Registration completed" }}</h3>
+          <div>
+            {{ this.confirmationError ? 'Token is not valid' : ' You Registration Process is completed successfully. You can sign in now.'}}
+          </div>
+          <div *ngIf="!this.confirmationError" class="text-end">Now you can <a class="text-center" href="/signin">Sign In</a></div>
+          <div *ngIf="this.confirmationError" class="text-end">Return to <a class="text-center" href="/signup">Sign Up</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,13 @@
+{
+  "context": [
+    "/api",
+    "/uploads"
+  ],
+  "target": "http://localhost:3001",
+  "secure": false,
+  "changeOrigin": true,
+  "logLevel": "debug",
+  "headers": {
+    "Connection": "keep-alive"
+  }
+}

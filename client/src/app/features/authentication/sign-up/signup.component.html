@@ -1,0 +1,115 @@
+<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="">
+        <div class="card" style="border-radius: 1rem">
+            <div class="card-body p-5">
+                <div class="mt-md-4">
+                    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+                        <div class="pt-1 d-grid gap-2 col-6 mx-auto text-center">
+                            <h1 class="">Sign Up (as employee)</h1>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="email">Email</label>
+                                    <input
+                                        [formControl]="form.controls.email"
+                                        type="email"
+                                        id="email"
+                                        class="form-control form-control-lg"
+                                        [ngClass]="
+                                            form.controls.email.errors && form.controls.email.touched
+                                                ? 'is-invalid'
+                                                : ''
+                                        "
+                                    />
+                                    <div class="invalid-feedback" *ngIf="form.controls.email.errors">
+                                        {{ form.controls.email.errors | validateError: "email" }}
+                                    </div>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="firstName">First Name</label>
+                                    <input
+                                        [formControl]="form.controls.firstName"
+                                        type="text"
+                                        id="firstName"
+                                        class="form-control form-control-lg"
+                                        [ngClass]="
+                                            form.controls.firstName.errors && form.controls.firstName.touched
+                                                ? 'is-invalid'
+                                                : ''
+                                        "
+                                    />
+                                    <div class="invalid-feedback" *ngIf="form.controls.firstName.errors">
+                                        {{ form.controls.firstName.errors | validateError }}
+                                    </div>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="lastName">Last Name</label>
+                                    <input
+                                        [formControl]="form.controls.lastName"
+                                        type="text"
+                                        id="lastName"
+                                        class="form-control form-control-lg"
+                                        [ngClass]="
+                                            form.controls.lastName.errors && form.controls.lastName.touched
+                                                ? 'is-invalid'
+                                                : ''
+                                        "
+                                    />
+                                    <div class="invalid-feedback" *ngIf="form.controls.lastName.errors">
+                                        {{ form.controls.lastName.errors | validateError }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="password">Password</label>
+                                    <input
+                                        type="password"
+                                        [formControl]="form.controls.password"
+                                        id="password"
+                                        class="form-control form-control-lg"
+                                        [ngClass]="
+                                            form.controls.password.errors && form.controls.password.touched
+                                                ? 'is-invalid'
+                                                : ''
+                                        "
+                                    />
+                                    <div class="invalid-feedback" *ngIf="form.controls.password.errors">
+                                        {{ form.controls.password.errors | validateError: "password" }}
+                                    </div>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="confirmPassword">Password Confirm</label>
+                                    <input
+                                        type="password"
+                                        [formControl]="form.controls.confirmPassword"
+                                        id="confirmPassword"
+                                        class="form-control form-control-lg"
+                                        [ngClass]="
+                                            form.controls.confirmPassword.errors &&
+                                            form.controls.confirmPassword.touched
+                                                ? 'is-invalid'
+                                                : ''
+                                        "
+                                    />
+                                    <div class="invalid-feedback" *ngIf="form.controls.confirmPassword.errors">
+                                        {{ form.controls.confirmPassword.errors | validateError: "password" }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pt-1 d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-dark btn-lg btn-block">Enter</button>
+                            <a class="text-center" href="/signin">Sign In</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

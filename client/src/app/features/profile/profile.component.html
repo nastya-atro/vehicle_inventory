@@ -1,0 +1,58 @@
+<div class="profile-container">
+    <div class="row">
+        <div class="col position-fixed bg-light">
+            <button type="button" (click)="editProfile()" class="btn btn-dark">Edit Profile</button>
+        </div>
+    </div>
+    <div [@fadeIn]="'fadeIn'">
+        <div class="row profile-form">
+            <form [formGroup]="form" class="form col-6">
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="firstName">First Name</label>
+                    <input
+                        [formControl]="form.controls.firstName"
+                        type="text"
+                        id="firstName"
+                        class="form-control form-control-lg"
+                        [ngClass]="
+                            form.controls.firstName.errors && form.controls.firstName.touched ? 'is-invalid' : ''
+                        "
+                    />
+                    <div class="invalid-feedback" *ngIf="form.controls.firstName.errors">
+                        {{ form.controls.firstName.errors | validateError }}
+                    </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="lastName">Last Name</label>
+                    <input
+                        [formControl]="form.controls.lastName"
+                        type="text"
+                        id="lastName"
+                        class="form-control form-control-lg"
+                        [ngClass]="form.controls.lastName.errors && form.controls.lastName.touched ? 'is-invalid' : ''"
+                    />
+
+                    <div class="invalid-feedback" *ngIf="form.controls.lastName.errors">
+                        {{ form.controls.lastName.errors | validateError }}
+                    </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="email">Email</label>
+                    <input
+                        [formControl]="form.controls.email"
+                        type="email"
+                        id="email"
+                        class="form-control form-control-lg"
+                        [ngClass]="form.controls.email.errors && form.controls.email.touched ? 'is-invalid' : ''"
+                    />
+
+                    <div class="invalid-feedback" *ngIf="form.controls.email.errors">
+                        {{ form.controls.email.errors | validateError: "email" }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

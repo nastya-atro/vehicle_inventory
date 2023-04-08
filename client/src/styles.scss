@@ -1,0 +1,50 @@
+@import "app/shared/modules/notifications/styles/style";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+.btn-icon > i {
+  position:relative;
+  top: calc(50% - 10px); /* 50% - 3/4 of icon height */
+}
+
+.ql-editor {
+  min-height: 100px;
+  max-height: 800px;
+}
+
+.ql-editor-container {
+  .ql-editor {
+    max-height: inherit;
+  }
+}
+
+.ql-toolbar.ql-snow {
+  margin-bottom: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.62);
+}
+.ql-container.ql-snow {
+  border: none !important;
+}
+
+.input-block{
+  &_invalid {
+    border: 2px dashed rgb(190, 15, 37);
+  }
+  padding: 5px;
+  //border: 2px dashed rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+}
+
+.logo{
+  height: 50px;
+  width: auto;
+}
+
+.navbar-brand{
+  //border: 1.5px dashed rgb(52, 52, 52);
+ &_white {
+   //border: 1.5px dashed rgb(255, 255, 255);
+ }
+  padding: 5px;
+  border-radius: 8px;
+
+}

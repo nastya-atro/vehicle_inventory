@@ -1,0 +1,23 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end">
+        <li (click)="page !== 1 && totalPages !== 0 && handleChangePage(page - 1, true)" class="page-item">
+            <span class="page-link" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </span>
+        </li>
+        <li
+            *ngFor="let item of paginationArray; let i = index"
+            class="page-item"
+            [ngClass]="item === page ? 'active' : ''"
+            (click)="handleChangePage(item, i === 1)"
+        >
+            <span class="page-link active" *ngIf="item === page">{{ item }}</span>
+            <a *ngIf="item !== page" class="page-link" role="button">{{ item }}</a>
+        </li>
+        <li (click)="page !== totalPages && totalPages !== 0 && handleChangePage(page + 1, false)" class="page-item">
+            <span class="page-link" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </span>
+        </li>
+    </ul>
+</nav>

@@ -1,0 +1,32 @@
+.multiselect {
+  position: relative;
+
+  .multiselect__list-wrapper {
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 20;
+    //overflow: hidden;
+  }
+
+  &_opened {
+    .multiselect__list-wrapper {
+      display: block;
+    }
+  }
+}
+
+.list-group-item:hover {
+  text: white;
+}
+
+.multiselect__list-wrapper {
+  width: 100%;
+  max-height: 170px;
+  overflow: auto;
+}
+
+.selected__list-wrapper {
+  max-height: 170px;
+  overflow: auto;
+}

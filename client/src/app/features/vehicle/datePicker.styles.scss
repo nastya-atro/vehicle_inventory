@@ -1,0 +1,220 @@
+@import "../../../assets/styles/variables";
+
+::ng-deep .dp-popup {
+  background: $color-bg-middle !important;
+  dp-day-time-calendar {
+    width: 384px;
+    background: $color-bg-middle;
+    box-shadow: $shadow-h;
+    border-radius: 8px;
+    padding: 16px;
+    dp-day-calendar {
+      margin-bottom: 16px;
+      .dp-day-calendar-container {
+        background-color: transparent;
+      }
+
+      dp-calendar-nav {
+        .dp-calendar-nav-container {
+          display: flex;
+          justify-content: space-between;
+          border: none;
+        }
+      }
+
+      .dp-nav-header {
+        font: $font-subheader-1-medium;
+        color: $color-text-main;
+        cursor: default;
+      }
+
+      .dp-nav-btns-container {
+        display: flex;
+        gap: 6px;
+
+        .dp-calendar-nav-container-left,
+        .dp-calendar-nav-container-right {
+          width: 24px;
+          height: 24px;
+        }
+
+        .dp-calendar-nav-left,
+        .dp-calendar-nav-right {
+          width: 100%;
+          height: 100%;
+          background: url("../../../assets/images/iconChevronLeft.svg")
+            no-repeat;
+          object-fit: contain;
+          border: none;
+          cursor: pointer;
+          opacity: 0.5;
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &:active {
+            opacity: 0.5;
+          }
+          &::before {
+            display: none;
+          }
+        }
+
+        .dp-calendar-nav-container-right {
+          .dp-calendar-nav-right {
+            transform: rotate(180deg);
+          }
+        }
+      }
+
+      .dp-calendar-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 12px;
+        border: none;
+      }
+
+      .dp-weekdays {
+        display: flex;
+        gap: 8px;
+
+        .dp-calendar-weekday {
+          width: 16px;
+          height: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font: $font-body-2-medium;
+          color: $color-text-main;
+          cursor: default;
+          border: none;
+        }
+      }
+
+      .dp-calendar-week {
+        display: flex;
+        gap: 8px;
+      }
+
+      .dp-calendar-day {
+        width: 16px;
+        height: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: none;
+        font: $font-body-1-medium;
+        color: $color-text-secondary;
+        cursor: pointer;
+
+        &:hover {
+          color: $color-text-main;
+          background: $color-bg-top;
+        }
+
+        &:active {
+          color: $color-text-main;
+          background: $color-bg-special;
+        }
+
+        &.dp-selected {
+          color: $color-text-main;
+          background: $color-bg-special;
+
+          &:hover {
+            background: $color-bg-top;
+          }
+
+          &:active {
+            background: $color-bg-special;
+          }
+        }
+      }
+
+      .dp-current-day {
+        color: $color-text-main;
+      }
+    }
+
+    dp-time-select {
+      width: 100%;
+      border: none;
+      .dp-time-select-controls {
+        display: flex;
+        gap: 4px;
+        list-style: none;
+        padding: 0;
+        margin: 16px 0 0;
+        background-color: transparent;
+      }
+
+      .dp-time-select-control {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-grow: 1;
+        gap: 2px;
+
+        &:hover {
+          .dp-time-select-control-up,
+          .dp-time-select-control-down {
+            opacity: 1;
+
+            &:active {
+              opacity: 0.7;
+            }
+          }
+
+          span {
+            color: $color-text-main;
+          }
+        }
+
+        span {
+          width: 100%;
+          height: 22px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: $color-bg-middle;
+          border: 1.5px solid $color-bg-top;
+          border-radius: 4px;
+          font: $font-body-1-medium;
+          color: $color-text-secondary;
+          cursor: default;
+        }
+      }
+
+      .dp-time-select-control-up,
+      .dp-time-select-control-down {
+        width: 24px;
+        height: 24px;
+        background-position: center;
+        object-fit: contain;
+        border: none;
+        opacity: 0.7;
+        cursor: pointer;
+        &:before {
+          display: none;
+        }
+      }
+
+      .dp-time-select-control-up {
+        background: url("../../../assets/images/iconChevronTop.svg") no-repeat;
+      }
+
+      .dp-time-select-control-down {
+        background: url("../../../assets/images/iconChevronTop.svg") no-repeat;
+        transform: rotateX(180deg);
+      }
+
+      .dp-time-select-separator {
+        display: none;
+      }
+    }
+  }
+}

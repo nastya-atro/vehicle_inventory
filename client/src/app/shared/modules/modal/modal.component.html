@@ -1,0 +1,14 @@
+<div
+  [ngClass]="actionModal ? 'modal_for-actions' : 'modal_preview'"
+  class="modal  modal_closed">
+  <div [ngClass]="slimSizeModal ? 'modal-window-crop' : ''"
+       class="modal-window"
+  >
+    <button (click)="this.close()" class="action-button action-button_inline-secondary">
+      <svg class="icon">
+        <use href='#iconClose' height='100%' width='100%'></use>
+      </svg>
+    </button>
+      <ng-content></ng-content>
+    </div>
+</div>

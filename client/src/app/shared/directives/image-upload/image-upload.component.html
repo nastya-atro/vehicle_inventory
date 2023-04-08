@@ -1,0 +1,116 @@
+<ng-container>
+    <ng-container *ngIf="image || croppedImage || state.croppedImagePreview || state.imagePreview; else uploadContent">
+        <div class="images-container">
+            <div class="bg-dark text-light images-container_area images-container_area_preview">
+                <img
+                    *ngIf="image || croppedImage || state.croppedImagePreview || state.imagePreview"
+                    class="drag-n-drop-area__img"
+                    [src]="(!disabled && state.croppedImagePreview) || state.imagePreview || croppedImage || image"
+                    alt=""
+                />
+                <div class="d-flex flex-column gap-2">
+                    <button
+                        *ngIf="isCroppingNeed"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        (click)="showModalPreview(this.image || state.imagePreview)"
+                        type="button"
+                        class="btn btn-lg btn-icon"
+                        [ngClass]="markError ? 'btn-outline-danger' : 'btn-outline-light'"
+                    >
+                        <i class="bi bi-crop"></i>
+                    </button>
+                    <button
+                        *ngIf="!isCroppingNeed"
+                        type="button"
+                        class="btn btn-outline-light btn-sm btn-icon"
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                    >
+                        <i class="bi bi-eye"></i>
+                    </button>
+                    <button (click)="removeBackground()" class="btn btn-outline-light btn-lg btn-icon">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
+
+<ng-template #uploadContent>
+    <div class="images-container">
+        <div class="banner-block" [ngClass]="markError ? 'banner-block_invalid' : ''">
+            <div
+                class="bg-dark text-light images-container_area images-container_area_dashed images-container_area_preview"
+            >
+                <div
+                    appDragNDrop
+                    (fileDropError)="onFileDropFailed($event)"
+                    (fileDropped)="onFileDropped($event)"
+                    accept="image/*"
+                    class="drag-n-drop-area-inner"
+                >
+                    <figcaption class="figure-caption form-label">Drag and drop to upload image</figcaption>
+                    <input
+                        class="form-control form-control-lg"
+                        id="formFileLg"
+                        type="file"
+                        (change)="fileBrowseHandler($event)"
+                        (click)="removeTargetValue($event)"
+                        accept="image/*"
+                    />
+                    <figcaption class="figure-caption mt-1 text-end" *ngFor="let description of descriptions">
+                        {{ description }}
+                    </figcaption>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div
+    #myModal
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+>
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Cropping Vehicle Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-content">
+                    <div *ngIf="cropLoading">Loading...</div>
+                    <div>Recommended aspect ratio - 5/3</div>
+
+                    <image-cropper
+                        *ngIf="state.hasCropper"
+                        class="img-wrapper"
+                        [imageBase64]="state.imagePreview || state.modalOriginImage"
+                        [maintainAspectRatio]="true"
+                        [aspectRatio]="aspectRatio"
+                        format="png"
+                        (imageCropped)="imageCropped($event)"
+                        (imageLoaded)="imageLoaded()"
+                        (cropperReady)="cropperComponentReady()"
+                        [cropper]="state.cropperPosition"
+                        [style.display]="state.cropperReady ? null : 'none'"
+                    ></image-cropper>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button (click)="closeModal()" type="button" class="btn btn-dark" data-bs-dismiss="modal">Close</button>
+                <button (click)="applyCroppingImage()" type="button" class="btn btn-dark" data-bs-dismiss="modal">
+                    Accept
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

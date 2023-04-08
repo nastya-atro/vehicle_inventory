@@ -1,0 +1,14 @@
+node_modules/
+dist/
+docs/
+coverage/
+typings/
+.vscode
+.idea
+*.iml
+*.log
+*.log.txt
+.classpath
+.project
+.settings
+.gitignore

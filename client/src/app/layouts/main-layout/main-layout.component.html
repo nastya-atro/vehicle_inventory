@@ -1,0 +1,22 @@
+<nav class="navbar bg-body-tertiary fixed-top bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/vehicles"> ARGUS | Vehicle Inventory Service </a>
+        <div class="d-flex flex-row gap-3">
+            <div class="navbar-nav d-flex flex-row gap-3">
+                <ng-container *ngIf="authService.isAuthorized() | async; else notAuth">
+                    <a [routerLink]="'/vehicles'" routerLinkActive="active" class="nav-link">Vehicle Manage</a>
+                    <a [routerLink]="'/profile'" routerLinkActive="active" class="nav-link">Profile</a>
+                    <button (click)="logout()" type="button" class="btn btn-outline-dark">Log out</button>
+                </ng-container>
+
+                <ng-template #notAuth>
+                    <a [routerLink]="'/signin'" class="btn btn-outline-dark">Log In</a>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid mt-5 p-4">
+    <router-outlet></router-outlet>
+</div>

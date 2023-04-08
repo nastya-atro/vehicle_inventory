@@ -1,0 +1,102 @@
+<div class="vehicle-container">
+    <div class="row">
+        <div class="col text-end position-fixed bg-light">
+            <button type="button" (click)="createCar()" class="btn btn-dark">Create New Vehicle</button>
+        </div>
+    </div>
+
+    <form [formGroup]="form" [@fadeIn]="'fadeIn'" class="form mt-4 mb-1">
+        <div class="row mt-2 mb-3">
+            <div class="form-outline">
+                <figcaption class="figure-caption form-label">Vehicle Name</figcaption>
+                <input
+                    [formControl]="form.controls.name"
+                    type="text"
+                    id="name"
+                    class="form-control form-control-lg"
+                    [ngClass]="form.controls.name.errors && form.controls.name.touched ? 'is-invalid' : ''"
+                />
+                <div class="invalid-feedback" *ngIf="form.controls.name.errors">
+                    {{ form.controls.name.errors | validateError }}
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2 mb-1">
+            <div class="form col d-flex flex-column align-self-center">
+                <app-image-upload
+                    [type]="'background'"
+                    [title]="'Image'"
+                    [isCroppingNeed]="true"
+                    [slimSizeModal]="true"
+                    [descriptions]="['JPG and PNG images']"
+                    [aspectRatio]="5 / 3"
+                    [markError]="!!(form.controls.originImage.invalid && form.controls.originImage.touched)"
+                    [image]="this.form.controls.originImage.value"
+                    [croppedImage]="this.form.controls.image.value"
+                    [cropSettings]="this.form.controls.imageCropSettings.value"
+                    (uploadFinished)="onUploadImageFinished($event)"
+                    (setCroppedBackgroundState)="setCroppedImageState($event)"
+                    (removed)="this.resetImage()"
+                ></app-image-upload>
+            </div>
+            <div class="col-6 mt-4">
+                <div class="form-outline mb-2">
+                    <div class="form-check p-0">
+                        <figcaption class="figure-caption form-label text-end">Select Vehicle Type</figcaption>
+                        <div>
+                            <select
+                                [formControl]="form.controls.type"
+                                (click)="form.get('type')?.markAsTouched()"
+                                class="form-select"
+                                [ngClass]="form.controls.type.errors && form.controls.type.touched ? 'is-invalid' : ''"
+                            >
+                                <option *ngFor="let type of carTypes" [value]="type.id">{{ type.title }}</option>
+                            </select>
+                            <div class="invalid-feedback" *ngIf="form.controls.type.errors">
+                                {{ form.controls.type.errors | validateError }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-outline mt-3">
+                    <figcaption class="figure-caption form-label text-end">Start Geo Point</figcaption>
+
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <figcaption class="figure-caption form-label">Latitude</figcaption>
+                                <input
+                                    [formControl]="form.controls.latitude"
+                                    type="number"
+                                    id="latitude"
+                                    class="form-control form-control-lg"
+                                    [ngClass]="
+                                        form.controls.latitude.errors && form.controls.latitude.touched
+                                            ? 'is-invalid'
+                                            : ''
+                                    "
+                                />
+                            </div>
+                        </div>
+                        <div class="col">
+                            <figcaption class="figure-caption form-label">Longitude</figcaption>
+                            <input
+                                [formControl]="form.controls.longitude"
+                                type="number"
+                                id="longitude"
+                                class="form-control form-control-lg"
+                                [ngClass]="
+                                    form.controls.longitude.errors && form.controls.longitude.touched
+                                        ? 'is-invalid'
+                                        : ''
+                                "
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,29 @@
+lockfileVersion: 5.4
+
+specifiers:
+  lodash.debounce: ^4.0.8
+  ng-animate: ^2.0.1
+
+dependencies:
+  lodash.debounce: 4.0.8
+  ng-animate: 2.0.1
+
+packages:
+
+  /lodash.debounce/4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
+
+  /ng-animate/2.0.1:
+    resolution: {integrity: sha512-ulXsBUYLLSBBypRenYFwqxOs0jvnJm5+TtiyOIhiau5+MOEK3n8o/WDdEeciicw8h8HocPAOvLg7XnDXqQW41w==}
+    peerDependencies:
+      '@angular/animations': '>=12.0.0'
+      '@angular/common': '>=12.0.0'
+      '@angular/core': '>=12.0.0'
+    dependencies:
+      tslib: 2.4.1
+    dev: false
+
+  /tslib/2.4.1:
+    resolution: {integrity: sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==}
+    dev: false

@@ -1,0 +1,94 @@
+/* Variables names from design guide */
+/* Colors */
+$color-accent-main: #4683F7;
+$color-accent-main-hovered: #5DAEFF;
+$color-accent-main-pressed: #3F76DE;
+
+$color-disabled: #2B2C2E;
+
+$color-text-main: #F9F9F9;
+$color-text-secondary: #848486;
+$color-text-in-buttons: #FBFBFB;
+
+$color-bg-special: #3E3F41;
+$color-bg-top: #2B2C2E;
+$color-bg-middle: #202123;
+$color-bg-bottom: #171819;
+$color-bg-bottom-opacity-30: rgba(23, 24, 25, 0.3);
+$color-bg-bottom-opacity-90: rgba(23, 24, 25, 0.9);
+
+$color-allow-default: #72C485;
+$color-allow-hovered: #7DD892;
+$color-allow-pressed: #67B078;
+
+$color-warning-default: #F2A40B;
+$color-warning-hovered: #FFC60D;
+$color-warning-pressed: #DA940A;
+
+$color-error-default: #D05C6A;
+$color-error-hovered: #E56575;
+$color-error-pressed: #BB535F;
+$color-error-default-opacity-10: rgba(208, 92, 106, 0.1);
+
+$color-blue-1: #C7F1FF;
+$color-violet-1: #BFBDFC;
+$color-orange-1: #FAC89B;
+$color-green-1: #BEE8C4;
+$color-red-1: #E9755E;
+$color-blue-1-opacity-20: rgba(199, 241, 255, 0.2);
+$color-violet-1-opacity-20: rgba(191, 189, 252, 0.2);
+$color-orange-1-opacity-20: rgba(250, 200, 155, 0.2);
+$color-green-1-opacity-20: rgba(190, 232, 196, 0.2);
+$color-red-1-opacity-20: rgba(233, 117, 94, 0.2);
+$color-disabled-opacity-20: rgba(132, 132, 134, 0.2);
+
+$bg-accent-gradient-1: linear-gradient(44deg, #8738EB 0%, #459BFF 114.35%);
+$bg-bottom-gradient: linear-gradient(0deg, rgba(23, 24, 25, 0.8), rgba(23, 24, 25, 0.8));
+$bg-top-shadow-gradient: linear-gradient(180deg, rgba(32, 33, 35, 0) 0%, #202123 23.88%);
+
+/* Fonts (line-height is auto ~ 1.21) */
+/* 'Product Sans' is regular */
+$font-header-0: clamp(2em, 2.29vw, 2.75em) 'Product Sans';
+$font-header-0-medium: clamp(2em, 2.29vw, 2.75em) 'Product Sans Medium';
+$font-header-1: clamp(1.25em, 2vw, 2em) 'Product Sans';
+$font-header-1-medium: clamp(1.25em, 2vw, 2em) 'Product Sans Medium';
+$font-header-2: clamp(1.125em, 1.5vw, 1.5em) 'Product Sans';
+$font-header-2-medium: clamp(1.125em, 1.5vw, 1.5em) 'Product Sans Medium';
+$font-subheader-1: clamp(1em, 1.125vw, 1.125em) 'Product Sans';
+$font-subheader-1-medium: clamp(1em, 1.125vw, 1.125em) 'Product Sans Medium';
+$font-body-1: clamp(0.875em, 1vw, 1em) 'Product Sans';
+$font-body-1-medium: clamp(0.875em, 1vw, 1em) 'Product Sans Medium';
+$font-body-2: clamp(0.75em, 0.875vw, 0.875em) 'Product Sans';
+$font-body-2-medium: clamp(0.75em, 0.875vw, 0.875em) 'Product Sans Medium';
+$font-button-1-medium: clamp(0.875em, 1vw, 1em) 'Product Sans Medium';
+$font-caption-1: clamp(0.6875em, 0.75vw, 0.75em) 'Product Sans';
+$font-caption-1-medium: clamp(0.6875em, 0.75vw, 0.75em) 'Product Sans Medium';
+
+/* Media breakpoints */
+$breakpoint-375: '375px';
+$breakpoint-600: '600px';
+$breakpoint-768: '768px';
+$breakpoint-1024: '1024px';
+$breakpoint-1240: '1240px';
+$breakpoint-1440: '1440px';
+$breakpoint-1640: '1640px';
+$breakpoint-1920: '1920px';
+
+/* Icon sizes */
+$icon-size-xs: 0.5em;
+$icon-size-s: 1em;
+$icon-size-m: 1.5em;
+
+/* Shadows */
+$shadow-m: 0 4px 44px rgba(0, 0, 0, 0.24);
+$shadow-h: 0 4px 80px rgba(0, 0, 0, 0.8);
+
+/* Blurs */
+$blur-8: blur(8px);
+
+/* Animations */
+$sidebar-animation: 150ms ease-out;
+
+
+/* Avatar */
+$avatar-size: 261px;

@@ -1,0 +1,53 @@
+.images-container {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+
+
+  &_title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    gap: 8px;
+    margin: 4px 0;
+  }
+
+  &_area {
+    &_preview {
+      height: 300px;
+    }
+
+    &_dashed {
+      //border: 2px dashed rgba(255, 255, 255, 0.8);
+      align-items: center;
+    }
+    //border: 1.5px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  img {
+    border-radius: 8px;
+    max-width: 80%;
+    max-height: 100%;
+    align-self: center;
+  }
+}
+
+.modal-dialog{
+  padding: 50px
+}
+
+.banner-block{
+  &_invalid {
+    border: 2px dashed rgb(190, 15, 37);
+  }
+  padding: 5px;
+  border: 2px dashed rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+}

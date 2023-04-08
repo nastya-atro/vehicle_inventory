@@ -1,0 +1,17 @@
+<table class="table" [ngClass]="class">
+    <thead>
+        <tr>
+            <th
+                *ngFor="let title of displayedColumns"
+                [ngClass]="title === 'actions' || title === 'content status' ? 'text-end' : ''"
+                scope="col"
+                class="font-monospace text-lowercase"
+            >
+                {{ title }}
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-content></ng-content>
+    </tbody>
+</table>

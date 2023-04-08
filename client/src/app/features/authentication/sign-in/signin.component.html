@@ -1,0 +1,53 @@
+<div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card" style="border-radius: 1rem">
+            <div class="card-body p-5">
+                <div class="mt-md-4 pb-5">
+                    <form [formGroup]="form" (ngSubmit)="submit()" class="form">
+                        <div class="pt-1 d-grid gap-2 col-6 mx-auto text-center">
+                            <h1 class="">Sign in</h1>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example17">Email</label>
+                            <input
+                                [formControl]="form.controls.username"
+                                type="email"
+                                id="form2Example17"
+                                class="form-control form-control-lg"
+                                [ngClass]="
+                                    form.controls.username.errors && form.controls.username.touched ? 'is-invalid' : ''
+                                "
+                            />
+
+                            <div class="invalid-feedback" *ngIf="form.controls.username.errors">
+                                {{ form.controls.username.errors | validateError: "email" }}
+                            </div>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <label class="form-label" for="form2Example27">Password</label>
+                            <input
+                                type="password"
+                                [formControl]="form.controls.password"
+                                id="form2Example27"
+                                class="form-control form-control-lg"
+                                [ngClass]="
+                                    form.controls.password.errors && form.controls.password.touched ? 'is-invalid' : ''
+                                "
+                            />
+                            <div class="invalid-feedback" *ngIf="form.controls.password.errors">
+                                {{ form.controls.password.errors | validateError: "password" }}
+                            </div>
+                        </div>
+
+                        <div class="pt-1 d-grid gap-2 col-6 mx-auto">
+                            <button class="btn btn-dark btn-lg btn-block">Login</button>
+                            <a class="text-center" routerLink="/signup">Sign Up as employee</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

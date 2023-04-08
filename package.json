@@ -1,0 +1,6 @@
+{
+	"dependencies": {
+		"lodash.debounce": "^4.0.8",
+		"ng-animate": "^2.0.1"
+	}
+}

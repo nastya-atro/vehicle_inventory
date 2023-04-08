@@ -1,0 +1,40 @@
+<div class="h-100">
+    <!-- if you want to open multiselect upward, use class "multiselect_upward" -->
+    <div #$el class="multiselect">
+        <div class="mb-2">
+            <div class="form-outline mb-1" (click)="toggleMultiselect($el)">
+                <input
+                    class="form-control form-control-md"
+                    type="text"
+                    readonly
+                    id="multiselect"
+                    name="multiselect"
+                    [placeholder]="checkAllOptionsAreSelected() ? 'All options are selected' : 'Choose ' + title"
+                />
+            </div>
+
+            <div class="multiselect__list-wrapper">
+                <ul class="list-group list-group-flush" *ngFor="let option of options | msf: selected">
+                    <li
+                        class="list-group-item bg-dark text-secondary list-group-item-action"
+                        (click)="addSelectItem($event, option)"
+                    >
+                        {{ option.title }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="d-flex gap-2 flex-wrap mt-1 selected__list-wrapper" *ngIf="selected">
+            <div class="d-flex gap-1" *ngFor="let itemSelect of selected">
+                <button disabled class="btn btn-sm btn-outline-dark">{{ itemSelect.title }}</button>
+                <button (click)="removeSelectItem($event, itemSelect)" class="btn btn-sm btn-dark">
+                    remove
+<!--                    <svg class="icon">-->
+<!--                        <use href="#close" height="100%" width="100%"></use>-->
+<!--                    </svg>-->
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
