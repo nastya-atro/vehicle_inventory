@@ -23,7 +23,7 @@ async function bootstrap() {
       credentials: true,
     });
   }
-  app.use(helmet());
+  // app.use(helmet());
   app.use(nocache());
   app.use(logger);
 

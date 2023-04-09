@@ -34,7 +34,6 @@ export class AuthController {
   @UseGuards(UserAuthGuard)
   @Post("login")
   login(@Req() req, @Session() session: SessionService) {
-    console.log("__________login");
     return this.authService.login(req.user, session);
   }
 
@@ -46,8 +45,6 @@ export class AuthController {
   @Post("signup")
   @ValidateDTO()
   signUp(@Body() body: SignUpInputDto, @Host() domain): Promise<string> {
-    console.log("__________signup");
-
     return this.authService.signup(body);
   }
 

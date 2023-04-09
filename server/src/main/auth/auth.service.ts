@@ -158,8 +158,6 @@ export class AuthService {
         title: ROLES.EMPLOYEE,
       });
 
-      console.log("______", role);
-
       return await this.dataSource.transaction(async () => {
         const user = await this.userRepository.save({
           email,
