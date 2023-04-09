@@ -28,11 +28,12 @@
         <div class="d-flex gap-2 flex-wrap mt-1 selected__list-wrapper" *ngIf="selected">
             <div class="d-flex gap-1" *ngFor="let itemSelect of selected">
                 <button disabled class="btn btn-sm btn-outline-dark">{{ itemSelect.title }}</button>
-                <button (click)="removeSelectItem($event, itemSelect)" class="btn btn-sm btn-dark">
+                <button
+                    [ngClass]="'btn-colored_' + itemSelect.title | lowercase"
+                    (click)="removeSelectItem($event, itemSelect)"
+                    class="btn btn-sm btn-dark"
+                >
                     remove
-<!--                    <svg class="icon">-->
-<!--                        <use href="#close" height="100%" width="100%"></use>-->
-<!--                    </svg>-->
                 </button>
             </div>
         </div>

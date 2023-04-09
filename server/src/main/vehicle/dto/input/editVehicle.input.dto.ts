@@ -22,6 +22,7 @@ export class EditVehicleInputDto {
   @IsNumber()
   readonly longitude: number;
 
+  @IsOptional()
   @Type(() => Date)
   readonly lastConnection: Date;
 

@@ -31,6 +31,11 @@ export class AddNewVehicleComponent {
   form: NewCarFormGroup;
   carTypes = [...CAR_TYPES_FILTER];
 
+  defaultGarageLocation = {
+    latitude: 51.107883,
+    longitude: 17.038538,
+  };
+
   displayImageError: ValidatorFn = (): ValidationErrors | null => {
     if (this.form?.controls.imageFile.value || this.form?.controls.originImage.value) {
       return null;
@@ -43,8 +48,9 @@ export class AddNewVehicleComponent {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(80)]),
       type: new FormControl(null, [Validators.required]),
-      latitude: new FormControl<number | null>(49.234),
-      longitude: new FormControl<number | null>(2.5273),
+      latitude: new FormControl<number | null>(null, [Validators.required]),
+      longitude: new FormControl<number | null>(null, [Validators.required]),
+      isDefaultLocation: new FormControl(false),
 
       image: new FormControl(''),
       imageCropSettings: new FormControl(''),
@@ -110,6 +116,26 @@ export class AddNewVehicleComponent {
       originImage: null,
       imageCropSettings: null,
       image: null,
+    });
+  }
+
+  setDefaultValue() {
+    if (this.form.controls.isDefaultLocation.value) {
+      this.form.patchValue({
+        latitude: this.defaultGarageLocation.latitude,
+        longitude: this.defaultGarageLocation.longitude,
+      });
+    } else {
+      this.form.patchValue({
+        latitude: null,
+        longitude: null,
+      });
+    }
+  }
+
+  resetCheckbox() {
+    this.form.patchValue({
+      isDefaultLocation: false,
     });
   }
 }

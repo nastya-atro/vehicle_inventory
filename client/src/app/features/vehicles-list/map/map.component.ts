@@ -1,4 +1,13 @@
-import { ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { Chart, ChartMeta, Element, TooltipModel } from 'chart.js';
 import * as ChartGeo from 'chartjs-chart-geo';
 // @ts-ignore
@@ -10,6 +19,7 @@ import Utils from '../../../core/utils/utils';
 import { loadTooltip } from '../../../core/utils/show-tooltip';
 import MapPointUsage from '../../../core/models/chart.model';
 import 'chart.js/auto';
+import { CarsList } from '../../../core/models/vehicle.model';
 
 let countries = (ChartGeo.topojson.feature(world as any, world.objects.countries as any) as any).features;
 
@@ -19,10 +29,10 @@ let countries = (ChartGeo.topojson.feature(world as any, world.objects.countries
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, OnChanges {
   @ViewChild('map') chart!: ElementRef;
   @ViewChild(ChartTooltipDirective, { static: true }) tooltipContainer!: ChartTooltipDirective;
-  @Input() selectedCustomersIDs: (string | number)[] = [];
+  @Input() cars: CarsList[] = [];
   chartMap!: any;
   initialSpotsLocations = [] as MapPointUsage[];
   mainPointImage = new Image();
@@ -34,47 +44,27 @@ export class MapComponent implements OnInit {
     Chart.register(ChartGeo.BubbleMapController, ChartGeo.GeoFeature, ChartGeo.SizeScale, ChartGeo.ProjectionScale);
   }
 
-  ngOnInit(): void {
-    const cars = [
-      {
-        name: 'Car 1',
-        id: 1,
-        latitude: 50.0,
-        longitude: 4.0,
-        typeName: 'SUV',
-      },
-      {
-        name: 'Car 2',
-        id: 2,
-        latitude: 60.0,
-        longitude: 8.0,
-        typeName: 'Truck',
-      },
-      {
-        name: 'Car 3',
-        id: 3,
-        latitude: 30.0,
-        longitude: 2.0,
-        typeName: 'Hybrid',
-      },
-      {
-        name: 'Car 4',
-        id: 4,
-        latitude: 15.0,
-        longitude: 1.0,
-        typeName: 'Hybrid',
-      },
-    ];
+  prepareLocations() {
+    this.initialSpotsLocations = this.cars.map(spot => MapPointUsage.deserialize(spot));
+  }
 
-    this.initialSpotsLocations = cars.map(spot => MapPointUsage.deserialize(spot));
+  ngOnInit(): void {
+    this.prepareLocations();
     setTimeout(() => this.setSpotPoints(), 500);
   }
 
   setSpotPoints() {
+    this.prepareLocations();
     this.spotPoints = [...this.initialSpotsLocations];
 
     this.chartMap && this.chartMap.destroy();
     this.generateMap();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['cars'] && this.chart) {
+      this.setSpotPoints();
+    }
   }
 
   generateMap() {

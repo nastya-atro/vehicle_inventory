@@ -20,21 +20,20 @@ export class VehicleListOutputDto {
   @Expose()
   lastConnection: Date;
 
-  lastGeoPoint: Point;
-
   @Expose()
   image: string;
+
+  @Expose()
+  latitude: number;
+
+  @Expose()
+  longitude: number;
 
   type: CarTypeEntity;
 
   @Expose()
   get typeName() {
     return this.type.type;
-  }
-
-  @Expose()
-  get geo() {
-    return this.lastGeoPoint;
   }
 
   constructor(partial: Partial<VehicleEntity>) {

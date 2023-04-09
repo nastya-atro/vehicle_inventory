@@ -1,89 +1,93 @@
-<div [@fadeIn]="'fadeIn'" [appLoader]="loading">
-    <div class="container-fluid">
-        <button routerLink="/new-vehicle" type="button" class="btn btn-outline-dark">Add New Vehicle</button>
-    </div>
-
+<div class="vehicle-container" [appLoader]="loading">
     <div class="row">
-        <div class="col">
-            <app-map></app-map>
-        </div>
-        <div class="col">
-            <div class="form-outline mb-1 mt-2">
-                <div class="form-floating">
-                    <input
-                        (search)="handleSearch($event)"
-                        (keyup)="handleSearch($event)"
-                        [value]="state.filters.q"
-                        class="form-control form-control-md"
-                        type="text"
-                        id="multiselect"
-                        name="multiselect"
-                        [placeholder]="'Search Vehicle by name or ID...'"
-                    />
-                    <label for="multiselect" class="d-flex gap-3">
-                        <i class="bi bi-search"></i>
-                        <span>Search Vehicle by name....</span>
-                    </label>
-                </div>
-            </div>
-            <div class="mt-3 d-flex flex-row justify-content-between">
-                <h4></h4>
-                <div class="d-flex flex-row gap-2">
-                    <app-multiselect
-                        [title]="'Car type'"
-                        [entity]="'type'"
-                        [filterProperty]="'types'"
-                        [options]="filtersOptions.types"
-                        [selectedOptions]="this.selectedTypes"
-                        (handleChange)="handleMultiselect($event)"
-                    ></app-multiselect>
-
-                    <app-select
-                        class="col-auto"
-                        [id]="filtersOptions.sortBy.name"
-                        [title]="filtersOptions.sortBy.title"
-                        [queryName]="filtersOptions.sortBy.queryName"
-                        [options]="filtersOptions.sortBy.options"
-                        [defaultOption]="defaultFilters.sortBy"
-                        (handleChanged)="handleChangeSortByFilter($event)"
-                    ></app-select>
-                </div>
-            </div>
+        <div class="col position-fixed">
+            <button type="button" routerLink="/new-vehicle" class="btn btn-dark">Add New Vehicle</button>
         </div>
     </div>
 
-    <div class="mt-3">
-        <app-table [displayedColumns]="displayedColumns">
-            <tr class="align-middle" *ngFor="let car of cars">
-                <td class="poster col-2">
-                    <div class="img-container">
-                        <img [routerLink]="['/tags/', car.id]" class="img-container__img" [src]="car.image" />
+    <div [@fadeIn]="'fadeIn'">
+        <div class="row row-with-map-container">
+            <div class="col">
+                <app-map *ngIf="cars" [cars]="cars"></app-map>
+            </div>
+            <div class="col filters-col">
+                <div class="form-outline mb-1 mt-2">
+                    <div class="form-floating">
+                        <input
+                            (search)="handleSearch($event)"
+                            (keyup)="handleSearch($event)"
+                            [value]="state.filters.q"
+                            class="form-control form-control-md"
+                            type="text"
+                            id="multiselect"
+                            name="multiselect"
+                            [placeholder]="'Search Vehicle by name or ID...'"
+                        />
+                        <label for="multiselect" class="d-flex gap-3">
+                            <i class="bi bi-search"></i>
+                            <span>Search Vehicle by name....</span>
+                        </label>
                     </div>
-                </td>
-                <td>{{ car.name || "—" }}</td>
-                <td>{{ (car.lastConnection | date: "medium") || "—" }}</td>
-                <td>
-                    <div [ngClass]="'type-container type_' + car.typeName | lowercase">{{ car.typeName }}</div>
-                </td>
-                <td class="text-end">
-                    <button class="btn btn-outline-dark btn-icon m-1" [routerLink]="['/edit/', car.id]">
-                        <i class="bi bi-pencil"></i>
-                    </button>
-                    <button (click)="removeCar(car.id)" class="btn btn-outline-dark btn-icon m-1">
-                        <i class="bi bi-trash3"></i>
-                    </button>
-                </td>
-            </tr>
-            <tr *ngIf="cars && cars.length < 1">
-                <td class="text-center" colspan="4">No Vehicles</td>
-            </tr>
-        </app-table>
+                </div>
+                <div class="mt-3 d-flex flex-row justify-content-between">
+                    <h4></h4>
+                    <div class="d-flex flex-row gap-2">
+                        <app-multiselect
+                            [title]="'Car type'"
+                            [entity]="'type'"
+                            [filterProperty]="'types'"
+                            [options]="filtersOptions.types"
+                            [selectedOptions]="this.selectedTypes"
+                            (handleChange)="handleMultiselect($event)"
+                        ></app-multiselect>
 
-        <app-pagination
-            [totalPages]="state.pagination.totalPages"
-            [page]="state.pagination.page"
-            [pageSize]="state.pagination.limit"
-            (handleChanged)="handleChangePage($event)"
-        ></app-pagination>
+                        <app-select
+                            class="col-auto"
+                            [id]="filtersOptions.sortBy.name"
+                            [title]="filtersOptions.sortBy.title"
+                            [queryName]="filtersOptions.sortBy.queryName"
+                            [options]="filtersOptions.sortBy.options"
+                            [defaultOption]="defaultFilters.sortBy"
+                            (handleChanged)="handleChangeSortByFilter($event)"
+                        ></app-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <app-table [displayedColumns]="displayedColumns">
+                <tr class="align-middle" *ngFor="let car of cars">
+                    <td class="poster col-2">
+                        <div class="img-container">
+                            <img [routerLink]="['/tags/', car.id]" class="img-container__img" [src]="car.image" />
+                        </div>
+                    </td>
+                    <td>{{ car.name || "—" }}</td>
+                    <td>{{ (car.lastConnection | date: "medium") || "—" }}</td>
+                    <td>
+                        <div [ngClass]="'type-container type_' + car.typeName | lowercase">{{ car.typeName }}</div>
+                    </td>
+                    <td class="text-end">
+                        <button class="btn btn-outline-dark btn-icon m-1" [routerLink]="['/edit/', car.id]">
+                            <i class="bi bi-pencil"></i>
+                        </button>
+                        <button (click)="removeCar(car.id)" class="btn btn-outline-dark btn-icon m-1">
+                            <i class="bi bi-trash3"></i>
+                        </button>
+                    </td>
+                </tr>
+                <tr *ngIf="cars && cars.length < 1">
+                    <td class="text-center" colspan="4">No Vehicles</td>
+                </tr>
+            </app-table>
+
+            <app-pagination
+                [totalPages]="state.pagination.totalPages"
+                [page]="state.pagination.page"
+                [pageSize]="state.pagination.limit"
+                (handleChanged)="handleChangePage($event)"
+            ></app-pagination>
+        </div>
     </div>
 </div>

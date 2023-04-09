@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {TooltipContent} from "../../../features/vehicles-list/map/map.interface";
+import { TooltipContent } from '../../../features/vehicles-list/map/map.interface';
 
 export interface TooltipData {
   content: TooltipContent[];
@@ -16,7 +16,5 @@ export class ChartTooltipComponent implements OnInit {
   @Input() data!: TooltipData;
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.data)
-  }
+  ngOnInit(): void {}
 }

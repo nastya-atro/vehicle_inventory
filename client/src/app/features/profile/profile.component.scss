@@ -1,11 +1,19 @@
-.stream-container {
+.profile-container {
   margin-top: 50px;
+
+  @media  screen and (max-width: 622px) {
+    margin-top: 70px;
+  }
 }
 
 .position-fixed {
   top: 55px;
   padding-top: 20px;
   padding-bottom: 10px;
+
+  @media  screen and (max-width: 622px) {
+    top: 100px;
+  }
 }
 
 .profile-form{

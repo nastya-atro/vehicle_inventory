@@ -6,13 +6,25 @@
     position: absolute;
     width: 100%;
     z-index: 20;
-    //overflow: hidden;
   }
 
   &_opened {
     .multiselect__list-wrapper {
       display: block;
     }
+  }
+}
+
+.btn-colored {
+  color: white;
+  &_suv {
+    background-color: #6725f5;
+  }
+  &_truck {
+    background-color: #f3af50;
+  }
+  &_hybrid {
+    background-color: #6ba250;
   }
 }
 

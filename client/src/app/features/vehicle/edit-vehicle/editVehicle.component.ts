@@ -67,9 +67,9 @@ export class EditVehicleComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required, Validators.maxLength(80)]),
       type: new FormControl(null, [Validators.required]),
-      latitude: new FormControl<number | null>(null),
-      longitude: new FormControl<number | null>(null),
-      lastConnection: new FormControl(''),
+      latitude: new FormControl<number | null>(null, [Validators.required]),
+      longitude: new FormControl<number | null>(null, [Validators.required]),
+      lastConnection: new FormControl('', [Validators.required]),
 
       image: new FormControl(''),
       imageCropSettings: new FormControl(''),
@@ -141,7 +141,7 @@ export class EditVehicleComponent implements OnInit {
           latitude: this.form.controls.latitude.value,
           longitude: this.form.controls.longitude.value,
           lastConnection: this.form.controls.lastConnection.value
-            ? Utils.localDateToUtcString(this.form.controls.lastConnection.value, this.dateForat)
+            ? Utils.utcDateStringToLocalString(this.form.controls.lastConnection.value, this.dateForat)
             : null,
 
           image: this.form.controls.image.value,

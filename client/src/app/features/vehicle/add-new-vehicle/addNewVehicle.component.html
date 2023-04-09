@@ -69,6 +69,7 @@
                                 <figcaption class="figure-caption form-label">Latitude</figcaption>
                                 <input
                                     [formControl]="form.controls.latitude"
+                                    (change)="resetCheckbox()"
                                     type="number"
                                     id="latitude"
                                     class="form-control form-control-lg"
@@ -84,6 +85,7 @@
                             <figcaption class="figure-caption form-label">Longitude</figcaption>
                             <input
                                 [formControl]="form.controls.longitude"
+                                (change)="resetCheckbox()"
                                 type="number"
                                 id="longitude"
                                 class="form-control form-control-lg"
@@ -93,6 +95,20 @@
                                         : ''
                                 "
                             />
+                        </div>
+                    </div>
+                    <div class="form-check p-0">
+                        <div class="form-outline mb-2">
+                            <div class="checkbox-container">
+                                <input
+                                    [formControl]="form.controls.isDefaultLocation"
+                                    (change)="setDefaultValue()"
+                                    type="checkbox"
+                                    class="checkbox"
+                                    id="btn-check"
+                                />
+                                <figcaption class="figure-caption">Use Default Garage Location</figcaption>
+                            </div>
                         </div>
                     </div>
                 </div>

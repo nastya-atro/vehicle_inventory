@@ -9,6 +9,8 @@ export interface INewCar {
   longitude: number | null;
   latitude: number | null;
   imageFile: any;
+
+  isDefaultLocation: boolean;
 }
 
 export interface NewCarFormGroup extends FormGroup {
@@ -19,6 +21,7 @@ export interface NewCarFormGroup extends FormGroup {
     type: AbstractControl;
     longitude: AbstractControl;
     latitude: AbstractControl;
+    isDefaultLocation: AbstractControl;
 
     image: AbstractControl;
     imageCropSettings: AbstractControl;

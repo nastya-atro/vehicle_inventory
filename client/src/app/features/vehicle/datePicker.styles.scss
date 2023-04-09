@@ -24,7 +24,7 @@
 
       .dp-nav-header {
         font: $font-subheader-1-medium;
-        color: $color-text-main;
+        color: #c0c0c0;
         cursor: default;
       }
 
@@ -87,7 +87,7 @@
           justify-content: center;
           align-items: center;
           font: $font-body-2-medium;
-          color: $color-text-main;
+          color: #c0c0c0;
           cursor: default;
           border: none;
         }
@@ -112,18 +112,18 @@
         cursor: pointer;
 
         &:hover {
-          color: $color-text-main;
+          color: #c0c0c0;
           background: $color-bg-top;
         }
 
         &:active {
-          color: $color-text-main;
+          color: #c0c0c0;
           background: $color-bg-special;
         }
 
         &.dp-selected {
-          color: $color-text-main;
-          background: $color-bg-special;
+          color: $color-bg-special;
+          background: #c0c0c0;
 
           &:hover {
             background: $color-bg-top;
@@ -136,7 +136,7 @@
       }
 
       .dp-current-day {
-        color: $color-text-main;
+        color: #c0c0c0;
       }
     }
 
@@ -170,7 +170,7 @@
           }
 
           span {
-            color: $color-text-main;
+            color: #c0c0c0;
           }
         }
 

@@ -48,6 +48,8 @@ export class VehicleService {
 
     const query = this.dataSource
       .createQueryBuilder(VehicleEntity, "vehicle")
+      .addSelect("ST_X(`last_geo_point`)", "latitude")
+      .addSelect("ST_Y(`last_geo_point`)", "longitude")
       .leftJoinAndSelect("vehicle.profile", "profile")
       .leftJoinAndSelect("vehicle.type", "car_type");
 

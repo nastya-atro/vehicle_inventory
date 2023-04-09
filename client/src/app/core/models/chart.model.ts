@@ -9,7 +9,7 @@ export default class MapPointUsage {
   longitude = 0;
   latitude = 0;
   // radius for mapPoint
-  value = 4;
+  value = 8;
   x: number | null = null;
   y: number | null = null;
   mergedPoints: MapPointUsage[] = [];

@@ -42,5 +42,4 @@ export default class Utils {
 
     return `rgba(${r},${g},${b},${opacity})`;
   };
-
 }

@@ -15,29 +15,29 @@
                     <figcaption class="figure-caption">Update Date</figcaption>
                     <div>{{ car.updateDate | date: "medium" }}</div>
                 </div>
-                <div class="block-with-radius p-3 border bg-dark text-light d-flex flex-row justify-content-between">
-                    <figcaption class="figure-caption">Last Successful Connection</figcaption>
-                    <div>
-                        <input
-                            placeholder="Click to choose Date"
-                            [formControl]="form.controls.lastConnection"
-                            mode="daytime"
-                            id="startDate"
-                            class="form-control form-control-lg"
-                            [dpDayPicker]="dayPickerconfig"
-                            (onChange)="dateIntervalChange()"
-                            [ngClass]="
-                                form.controls.lastConnection.errors && form.controls.lastConnection.touched
-                                    ? 'is-invalid'
-                                    : ''
-                            "
-                        />
-                    </div>
-                </div>
             </div>
         </div>
 
         <form [formGroup]="form" class="form">
+            <div class="block-with-radius p-3 border bg-dark text-light d-flex flex-row justify-content-between">
+                <figcaption class="figure-caption">Last Successful Connection</figcaption>
+                <div>
+                    <input
+                        placeholder="Click to choose Date"
+                        [formControl]="form.controls.lastConnection"
+                        mode="daytime"
+                        id="startDate"
+                        class="form-control form-control-lg"
+                        [dpDayPicker]="dayPickerconfig"
+                        (onChange)="dateIntervalChange()"
+                        [ngClass]="
+                            form.controls.lastConnection.errors && form.controls.lastConnection.touched
+                                ? 'is-invalid'
+                                : ''
+                        "
+                    />
+                </div>
+            </div>
             <div class="row mt-2">
                 <div class="form col d-flex flex-column align-self-center">
                     <app-image-upload
