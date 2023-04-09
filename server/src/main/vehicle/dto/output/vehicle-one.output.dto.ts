@@ -21,10 +21,14 @@ export class VehicleOneOutputDto {
   @Expose()
   lastConnection: Date;
 
-  lastGeoPoint: Point;
-
   @Expose()
   image: string;
+
+  @Expose()
+  latitude: number;
+
+  @Expose()
+  longitude: number;
 
   @Expose()
   originImage: string;
@@ -38,16 +42,6 @@ export class VehicleOneOutputDto {
   @Expose()
   get typeId() {
     return this.type.id;
-  }
-
-  @Expose()
-  get latitude() {
-    return 0;
-  }
-
-  @Expose()
-  get longitude() {
-    return 0;
   }
 
   constructor(partial: Partial<VehicleEntity>) {

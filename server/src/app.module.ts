@@ -9,6 +9,7 @@ import { TransformInterceptor } from "./common/interceptors/transform.intercepto
 import { AllExceptionFilter } from "./common/exeptions/all-exception.filter";
 import { DatabaseModule } from "./database/database.module";
 import { MainModule } from "./main/main.module";
+import "./database/polyfill";
 
 const envFile = process.env.NODE_ENV
   ? `.env.${process.env.NODE_ENV}`

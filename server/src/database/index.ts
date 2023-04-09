@@ -18,6 +18,9 @@ export const mergeConnectionOptions: any = (
   entities: [__dirname + "/../common/**/**{.ts,.js}"],
   bigNumberStrings: false,
   // keepConnectionAlive: true,
+
+  // Add support to Geometry Data (Point/coordinates) !!!
+  legacySpatialSupport: false,
 });
 
 /**

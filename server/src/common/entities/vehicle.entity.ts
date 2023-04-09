@@ -8,6 +8,7 @@ import {
 import { ProfileEntity } from "./profile.entity";
 import { CarTypeEntity } from "./car-type.entity";
 import { ImageCropSettings } from "../models/image-crop-settings.model";
+import { VirtualColumn } from "../decorators/virtual-column.decorators";
 
 @Entity("vehicle")
 export class VehicleEntity {
@@ -26,18 +27,18 @@ export class VehicleEntity {
   @Column({ name: "last_connection" })
   lastConnection: Date;
 
-  // @Column("geometry", {
-  //   name: "last_geo_point",
-  //   spatialFeatureType: "Point",
-  //   srid: 4326,
-  // })
-  // @Index({ spatial: true })
-  // lastGeoPoint: Geometry;
-
   @Column({
     name: "last_geo_point",
+    type: "point",
+    srid: 4326,
   })
   lastGeoPoint: string;
+
+  @VirtualColumn()
+  latitude: number;
+
+  @VirtualColumn()
+  longitude: number;
 
   @Column({ type: "varchar", length: 255 })
   image: string;

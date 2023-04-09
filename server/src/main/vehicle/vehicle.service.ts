@@ -79,6 +79,8 @@ export class VehicleService {
   async findOne(id: number) {
     const vehicle = await this.dataSource
       .createQueryBuilder(VehicleEntity, "vehicle")
+      .addSelect("ST_X(`last_geo_point`)", "latitude")
+      .addSelect("ST_Y(`last_geo_point`)", "longitude")
       .leftJoinAndSelect("vehicle.type", "type")
       .whereInIds([id])
       .getOne();
@@ -106,7 +108,7 @@ export class VehicleService {
         id: type,
       });
 
-      //  const geoPoint = `POINT(${latitude} ${longitude})`;
+      const geoPoint = `POINT(${latitude} ${longitude})`;
 
       await this.dataSource.transaction(async (manager) => {
         const newVehicle = await manager.save(VehicleEntity, {
@@ -115,7 +117,7 @@ export class VehicleService {
           createDate: moment.utc().toDate(),
           updateDate: "",
           lastConnection: "",
-          lastGeoPoint: null,
+          lastGeoPoint: geoPoint,
           profile,
         });
         const { originImageFilename, croppedImageFilename } = this.uploadImages(
@@ -180,12 +182,14 @@ export class VehicleService {
         id: body.type,
       });
 
+      const geoPoint = `POINT(${body.latitude} ${body.longitude})`;
+
       const vehicleForUpdating = {
         name: body.name,
         type: selectedType,
         updateDate: moment.utc().toDate(),
         lastConnection: body.lastConnection,
-        lastGeoPoint: null,
+        lastGeoPoint: geoPoint,
         image: croppedImageFilename,
         originImage: originImageFilename,
         imageCropSettings: body.imageCropSettings,
