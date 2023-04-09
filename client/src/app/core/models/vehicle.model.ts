@@ -19,6 +19,8 @@ export interface CarsList {
   name: string;
   createDate: string;
   updateDate: string;
+  longitude: number;
+  latitude: number;
   lastConnection: string;
   image: string;
   typeName: string;

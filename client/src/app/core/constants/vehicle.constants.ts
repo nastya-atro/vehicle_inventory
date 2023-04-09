@@ -21,3 +21,4 @@ export const CAR_TYPES_FILTER = [
   { id: 2, title: CAR_TYPES.Truck },
   { id: 3, title: CAR_TYPES.Hybrid },
 ];
+

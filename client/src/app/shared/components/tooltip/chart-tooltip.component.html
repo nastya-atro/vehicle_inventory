@@ -1,0 +1,21 @@
+<div
+    class="tooltip"
+    [ngStyle]="{
+        'top.px': data.top,
+        'left.px': data.left,
+        transform: 'translate(-50%, calc(-100% - 8px))',
+        'pointer-events': 'none'
+    }"
+>
+    <div class="tooltip__content">
+        <div *ngFor="let item of data.content" class="tooltip__item">
+            <p class="tooltip__title" [style.color]="item.color || '#12121B'">{{ item.title }}</p>
+            <p
+                *ngIf="item.description"
+                class="tooltip__description"
+                [style.color]="'#AEAEAE'"
+                [innerHTML]="item.description"
+            ></p>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ import { CAR_ROUTES } from './vehicles.routes';
 import { VehiclesComponent } from './vehicles.component';
 import { TableModule } from '../../shared/modules/table/table.module';
 import { PaginationModule } from '../../shared/modules/pagination/pagination.module';
+import {MapComponent} from "./map/map.component";
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { PaginationModule } from '../../shared/modules/pagination/pagination.mod
     TableModule,
     PaginationModule,
   ],
-  declarations: [VehiclesComponent],
+  declarations: [VehiclesComponent, MapComponent],
 })
 export class VehiclesModule {}

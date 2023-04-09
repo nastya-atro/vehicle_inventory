@@ -1,0 +1,27 @@
+<div class="spot-management__map">
+    <div style="position: relative">
+        <canvas #map></canvas>
+        <ng-template appTooltipContainer></ng-template>
+        <ng-container *ngFor="let point of spotPoints">
+            <div
+                *ngIf="point.x !== null && point.y !== null"
+                class="map-point"
+                [ngStyle]="{
+                    'width.px': point.value * 2,
+                    'height.px': point.value * 2,
+                    'left.px': point.x,
+                    'top.px': point.y,
+                    'border-color': transformColor(point.color, 0.4),
+                    'background-color': point.color,
+                    'font-size.px': point.value,
+                    color: point.color
+                }"
+            >
+                <span class="map-point__pulse" *ngIf="point.status !== 'Error'"></span>
+                <span *ngIf="point.mergedPoints.length" class="map-point__number"
+                    >{{ point.mergedPoints.length + 1 }}</span
+                >
+            </div>
+        </ng-container>
+    </div>
+</div>

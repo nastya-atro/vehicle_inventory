@@ -1,0 +1,73 @@
+@import "src/assets/styles/variables.scss";
+
+::ng-deep .tooltip {
+  position: absolute;
+  z-index: 9;
+  left: 0;
+  top: 0;
+
+  &__content {
+    background: #fdfdfd;
+    height: fit-content;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: $shadow-2;
+    isolation: isolate;
+
+    &::after {
+      content: "";
+      background: $color-bg-Bg1;
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      left: calc(50% - 16px / 2);
+      bottom: -6px;
+      border-radius: 2px;
+      transform: rotate(-45deg);
+      z-index: 0;
+    }
+  }
+
+  &__value {
+    font: $font-caption-1-medium;
+    color: $color-text-main;
+    span {
+      display: inline-block;
+    }
+  }
+
+  &__item {
+    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__title {
+    font: $font-body-1-medium;
+    color: $color-text-main;
+    position: relative;
+    z-index: 1;
+  }
+
+  &__description {
+    font: $font-body-2-medium;
+    white-space: nowrap;
+  }
+
+  &__bulletpoint {
+    margin: 0 4px;
+  }
+
+  &__sm {
+    .tooltip__content {
+      width: 83px;
+      padding: 4px 12px;
+    }
+
+    .tooltip__title {
+      font: $font-caption-1-medium;
+    }
+  }
+}

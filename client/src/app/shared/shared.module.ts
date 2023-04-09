@@ -10,6 +10,8 @@ import { LoaderDirective } from './directives/loader/loader.directive';
 import { SelectComponent } from './components/select/select.component';
 import { MultiSelectFilterPipe } from '../core/pipes/multi-select-filter.pipe';
 import { MultiselectComponent } from './components/multiselect/multiselect.component';
+import { ChartTooltipComponent } from "./components/tooltip/chart-tooltip.component";
+import { ChartTooltipDirective } from "./components/tooltip/chart-tooltip.directive";
 
 const COMPONENTS = [
   PageNotFoundComponent,
@@ -18,11 +20,12 @@ const COMPONENTS = [
   LoaderComponent,
   SelectComponent,
   MultiselectComponent,
+  ChartTooltipComponent
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, NotifyModule],
-  declarations: [...COMPONENTS, LoaderDirective],
-  exports: [...COMPONENTS, LoaderDirective],
+  declarations: [...COMPONENTS, LoaderDirective, ChartTooltipDirective],
+  exports: [...COMPONENTS, LoaderDirective, ChartTooltipDirective],
 })
 export class SharedModule {}

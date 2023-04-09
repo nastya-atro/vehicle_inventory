@@ -17,3 +17,22 @@
   }
 }
 
+.type-container{
+  padding: 5px 10px;
+  text-align: center;
+  color: white;
+}
+
+.type{
+
+  &_suv {
+    background-color: #6725f5;
+  }
+  &_truck {
+    background-color: #f3af50;
+  }
+  &_hybrid {
+    background-color: #6ba250;
+  }
+}
+
