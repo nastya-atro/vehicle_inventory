@@ -30,7 +30,7 @@ services:
 
   backend:
    # image: chevoska/testapp:server2
-    build: ./chevoska-server
+    build: ./server
     container_name: server
     depends_on:
       - cache
@@ -38,7 +38,7 @@ services:
     ports:
       - 0.0.0.0:3001:3001
     volumes:
-      - /var/chevoska/uploads:/usr/src/app/public/uploads
+      - /var/invent/uploads:/usr/src/app/public/uploads
     environment:
       - HOST=0.0.0.0
       - PORT=3001
@@ -49,7 +49,7 @@ services:
       - CUSTOM_HOST=http://168.119.62.93
 
       - REDIS_CLUSTER_MODE=false
-      - REDIS_KEY_PREFIX=CVEVOSKA_
+      - REDIS_KEY_PREFIX=INVENT_
       - REDIS_CONNECTION_STRING=cache:6379
 
       - ALLOW_CORS=true
