@@ -2,7 +2,7 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
-import { Vehicles } from '../../core/services/api/vehicles';
+import { VehiclesApi } from '../../core/services/api/vehicles';
 import { CarResponse } from '../../core/models/vehicle.model';
 
 @UntilDestroy()
@@ -10,7 +10,7 @@ import { CarResponse } from '../../core/models/vehicle.model';
   providedIn: 'root',
 })
 export class VehicleService implements OnDestroy {
-  constructor(private router: Router, private carsApi: Vehicles) {}
+  constructor(private router: Router, private carsApi: VehiclesApi) {}
 
   ngOnDestroy(): void {}
 

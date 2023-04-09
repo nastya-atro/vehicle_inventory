@@ -19,6 +19,7 @@ specifiers:
   '@angular/platform-browser': ~14.1.1
   '@angular/platform-browser-dynamic': ~14.1.1
   '@angular/router': ~14.1.1
+  '@faker-js/faker': ^7.6.0
   '@ng-bootstrap/ng-bootstrap': ^13.0.0
   '@ngneat/until-destroy': ^9.2.0
   '@ngrx/effects': 14.0.2
@@ -74,6 +75,7 @@ dependencies:
   '@angular/platform-browser': 14.1.1_dusuq6hcudnbixadvxsdwhkk7i
   '@angular/platform-browser-dynamic': 14.1.1_lnensrfox2wowsihtp7kwlgdve
   '@angular/router': 14.1.1_4dwcoho4cvsrbipjme2lv3ae7y
+  '@faker-js/faker': 7.6.0
   '@ng-bootstrap/ng-bootstrap': 13.0.0_5hargm2mcdwv46kzaw5ealehw4
   '@ngneat/until-destroy': 9.2.0_pe5o2idy3nicazspuvdwte5aiy
   '@ngrx/effects': 14.0.2_6hcskdhywj6o64gt4bbp35cnti
@@ -1962,6 +1964,11 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /@faker-js/faker/7.6.0:
+    resolution: {integrity: sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==}
+    engines: {node: '>=14.0.0', npm: '>=6.0.0'}
     dev: false
 
   /@gar/promisify/1.1.3:

@@ -8,7 +8,7 @@ import { QueryParams } from '../../interfaces/query-params.interfaces';
 @Injectable({
   providedIn: 'root',
 })
-export class Vehicles implements OnDestroy {
+export class VehiclesApi implements OnDestroy {
   SEGMENT = '/vehicle';
 
   constructor(private api: ApiService) {}
