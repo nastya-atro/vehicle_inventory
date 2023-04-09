@@ -69,7 +69,7 @@ export class EditVehicleComponent implements OnInit {
       type: new FormControl(null, [Validators.required]),
       latitude: new FormControl<number | null>(null, [Validators.required]),
       longitude: new FormControl<number | null>(null, [Validators.required]),
-      lastConnection: new FormControl('', [Validators.required]),
+      lastConnection: new FormControl(''),
 
       image: new FormControl(''),
       imageCropSettings: new FormControl(''),

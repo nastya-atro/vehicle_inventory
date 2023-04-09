@@ -1,10 +1,14 @@
 @import "src/assets/styles/variables.scss";
 
+.tooltip-wrapper{
+  position: absolute;
+  z-index: 99;
+}
+
 ::ng-deep .tooltip {
   position: absolute;
-  z-index: 9;
+  z-index: 99;
   left: 0;
-  top: 0;
 
   &__content {
     background: #fdfdfd;
@@ -37,9 +41,10 @@
   }
 
   &__item {
-    padding: 8px 16px;
+    padding: 8px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    gap: 10px;
     justify-content: center;
     align-items: center;
   }
@@ -57,13 +62,13 @@
   }
 
   &__bulletpoint {
-    margin: 0 4px;
+   // margin: 0 4px;
   }
 
   &__sm {
     .tooltip__content {
       width: 83px;
-      padding: 4px 12px;
+     // padding: 4px 12px;
     }
 
     .tooltip__title {
