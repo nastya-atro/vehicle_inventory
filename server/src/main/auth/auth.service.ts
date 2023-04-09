@@ -117,10 +117,15 @@ export class AuthService {
   }
 
   private async findOneByUsername(email) {
-    return this.userRepository.findOne({
-      where: { email },
-      relations: ["role"],
-    });
+    try {
+      const user = await this.userRepository.findOne({
+        where: { email },
+        relations: ["role"],
+      });
+      return user;
+    } catch (e) {
+      return null;
+    }
   }
 
   private async createUser(data: SignUpModel) {
@@ -152,6 +157,8 @@ export class AuthService {
       const role = await this.roleRepository.findOneBy({
         title: ROLES.EMPLOYEE,
       });
+
+      console.log("______", role);
 
       return await this.dataSource.transaction(async () => {
         const user = await this.userRepository.save({
