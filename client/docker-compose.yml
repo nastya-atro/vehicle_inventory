@@ -11,10 +11,9 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
 
   client:
-    # image: chevoska/testapp:client2
     build: .
     platform: linux/amd64
     container_name: client
     ports:
-      - '4202:80'
+      - '172.17.0.1:4202:80'
 
